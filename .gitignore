@@ -1,0 +1,18 @@
+# Build output
+/target/
+
+# Local node data created while testing (identity keys!)
+/data/
+*.key
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Future desktop app
+/apps/desktop/node_modules/
+/apps/desktop/dist/
+/apps/desktop/src-tauri/target/

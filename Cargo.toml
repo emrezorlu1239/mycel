@@ -1,0 +1,46 @@
+[workspace]
+resolver = "2"
+members = ["crates/mycel-core", "crates/mycel-cli"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/emrezorlu1239/mycel"
+authors = ["Emre Zorlu"]
+rust-version = "1.88"
+
+[workspace.dependencies]
+libp2p = { version = "0.57", features = [
+    "tokio",
+    "tcp",
+    "quic",
+    "dns",
+    "noise",
+    "yamux",
+    "macros",
+    "identify",
+    "ping",
+    "relay",
+    "dcutr",
+    "mdns",
+    "request-response",
+    "json",
+    "serde",
+] }
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+bs58 = "0.5"
+clap = { version = "4", features = ["derive"] }
+directories = "6"
+tempfile = "3"
+
+[profile.release]
+lto = "thin"
+strip = true
