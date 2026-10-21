@@ -78,9 +78,10 @@ the relay fallback.
 
 - **Real routers and ISPs.** Follow [testing-with-friends.md](testing-with-friends.md)
   and fill in the table below.
-- **Windows and macOS builds.** The code has no platform-specific networking,
-  and CI builds and tests on all three systems, but the first CI run has not
-  happened yet.
+
+Verified since: the first GitHub Actions run (2026-10-21) built, linted and
+passed all tests on **Linux, Windows and macOS**, and the 7 NAT scenarios
+passed again on GitHub's own runner.
 
 ### Real-world results
 

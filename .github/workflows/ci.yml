@@ -17,7 +17,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
@@ -33,7 +33,7 @@ jobs:
     name: NAT scenarios (simulated internet)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Install network tools
@@ -42,9 +42,19 @@ jobs:
         run: cargo build --release
       - name: Run scenarios
         run: sudo scripts/netsim/netsim.sh all
+      - name: Collect logs
+        if: always()
+        # The scenarios run as root and node identity keys are private (0600).
+        # Copy only the logs, readable by the runner, and leave the keys out.
+        run: |
+          mkdir -p netsim-logs
+          sudo find /tmp/mycel-netsim \( -name '*.log' -o -name log -o -name summary.txt -o -name invite \) \
+            -exec cp --parents {} netsim-logs/ \; 2>/dev/null || true
+          sudo chown -R "$(id -u):$(id -g)" netsim-logs
       - name: Keep logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: netsim-logs
-          path: /tmp/mycel-netsim
+          path: netsim-logs
+          if-no-files-found: warn

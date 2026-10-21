@@ -18,6 +18,7 @@ other with an invite code and chat over an encrypted connection?
 - [x] Automatic reconnect when the host comes back
 - [x] `mycel` CLI with `host`, `join`, `relay`, `id`
 - [x] 24 unit + integration tests, NAT simulator with 7 scenarios (3 × 7/7 passing)
+- [x] CI green on Linux, Windows and macOS
 - [ ] Real-world test across two homes (see [testing-with-friends.md](testing-with-friends.md))
 
 ## Phase 1 – A usable desktop app
