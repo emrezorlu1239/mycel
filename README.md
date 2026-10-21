@@ -111,6 +111,10 @@ The network simulator builds home routers out of Linux network namespaces
 (cone NAT, symmetric/CGNAT-style NAT, port forwarding) and checks which path
 each connection takes. Latest results: [docs/phase-0-report.md](docs/phase-0-report.md).
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and the branch / pull request workflow.
+
 ## License
 
 [MIT](LICENSE)
